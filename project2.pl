@@ -42,6 +42,18 @@ male('maester pycelle').
 
 %female(character)
 %	Succeeds if the character is a female
+female('joanna lannister').
+female('cersei lannister').
+female('rhaella targaryen').
+female('daenerys targaryen').
+female('myrcella baratheon').
+female('margaery tyrell').
+female('lysa arryn').
+female('catelyn stark').
+female('lyanna stark').
+female('sansa stark').
+female('arya stark').
+
 
 %stark(character)
 %	Succeeds if the character is part of the House Stark
