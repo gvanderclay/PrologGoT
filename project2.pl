@@ -1,8 +1,44 @@
 %Rules
 
-
 %male(character)
 %	Succeeds if the character is a male
+male('tywin lannister').
+male('kevan lannister').
+male('jaime lannister').
+male('tyrion lannister').
+male('lancel lannister').
+male('stannis baratheon').
+male('renly baratheon').
+male('robert baratheon').
+male('joffrey baratheon').
+male('tommen baratheon').
+male('mace tyrell').
+male('willas tyrell').
+male('loras tyrell').
+male('aeryis targaryen').
+male('rhaegar targaryen').
+male('viserys targaryen').
+male('robin arryn')
+male('jon arryn').
+male('hoster tully').
+male('edmure tully').
+male('rickard stark').
+male('benjen stark').
+male('brandon stark').
+male('eddard stark').
+male('jon snow').
+male('robb stark').
+male('bran stark').
+male('rickon stark').
+male('sandor clegane').
+male('gregor clegane').
+male('janos slynt').
+male('ilyn payne').
+male('barristan selmy').
+male('varys').
+male('petyr baelish').
+male('maester pycelle').
+
 
 %female(character)
 %	Succeeds if the character is a female
@@ -28,17 +64,11 @@
 %targaryen(character)
 %	Succeeds if the character is part of the House Targaryen
 
-%martell(character)
-%	Succeeds if the character is part of the House Martell
-
 %arryn(character)
 %	Succeeds if the character is part of the House Arryn
 
 %nights_watch(character)
 %	Succeeds if the character is part of the Nights Watch
-
-%wildling(character)
-%	Succeeds if the character is a wildling
 
 %married(character1, character2)
 %	Succeeds if character1 is married to character2
@@ -52,5 +82,3 @@
 
 %bastard(character)
 %	Succeeds if the character is a bastard child
-
-
