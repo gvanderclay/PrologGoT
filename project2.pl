@@ -148,6 +148,49 @@ parent('tywin lannister', 'cersei lannister').
 parent('tywin lannister', 'jaime lannister').
 parent('tywin lannister', 'tyrion lannister').
 parent('kevan lannister', 'lancel lannister').
+parent('aerys targaryen', 'rhaegar targaryen').
+parent('rhaella targaryen', 'rhaegar targaryen').
+parent('aerys targaryen', 'viserys targaryen').
+parent('rhaella targaryen', 'viserys targaryen').
+parent('aerys targaryen', 'daenerys targaryen').
+parent('rhaella targaryen', 'daenerys targaryen').
+parent('cersei lannister', 'joffrey baratheon').
+parent('robert baratheon', 'joffrey baratheon').
+parent('cersei lannister', 'myrcella baratheon').
+parent('robert baratheon', 'myrcella baratheon').
+parent('cersei lannister', 'tommen baratheon').
+parent('robert baratheon', 'tommen baratheon').
+parent('mace tyrell', 'willas tyrell').
+parent('mace tyrell', 'garlan tyrell').
+parent('mace tyrell', 'margaery tyrell').
+parent('mace tyrell', 'loras tyrell').
+parent('hoster tully', 'catelyn stark').
+parent('hoster tully', 'lysa arryn').
+parent('hoster tully', 'edmure tully').
+parent('jon arryn', 'robin arryn').
+parent('lysa arryn', 'robin arryn').
+parent('eddard stark', 'jon snow').
+parent('eddard stark', 'robb stark').
+parent('catelyn stark', 'robb stark').
+parent('eddard stark', 'sansa stark').
+parent('catelyn stark', 'sansa stark').
+parent('eddard stark', 'arya stark').
+parent('catelyn stark', 'arya stark').
+parent('eddard stark', 'bran stark').
+parent('catelyn stark', 'bran stark').
+parent('eddard stark', 'rickon stark').
+parent('catelyn stark', 'rickon stark').
+parent('rickard stark', 'benjen stark').
+parent('rickard stark', 'brandon stark').
+parent('rickard stark', 'lyanna stark').
+parent('rickard stark', 'eddard stark').
+
+%sibling(character 1, character 2)
+% Succeeds if character1 is sibling to character 2
+%	Need a definition for both directions
+%	e.g.
+%	sibling('robb stark', 'sansa stark').
+%	sibling('sansa stark', 'robb stark').
 
 %serves(character, house)
 %	Succeeds if character is in service to the given house
