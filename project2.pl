@@ -120,10 +120,15 @@ arryn('robin arryn')
 arryn('jon arryn').
 arryn('lysa arryn').
 
+%clegane(character)
+%	Succeeds if the character is part of the House Clegane
+clegane('sandor clegane').
+clegane('gregor clegane').
+
 %married(character1, character2)
 %	Succeeds if character1 is married to character2
 %	Need a definition for both directions
-%	e.g. 
+%	e.g.
 %	married('eddard stark', 'catelyn stark').
 %	married('catelyn stark', 'eddard stark').
 married('robert baratheon', 'cersei lannister').
@@ -137,6 +142,12 @@ married('lysa arryn', 'jon arryn').
 married('eddard stark', 'catelyn stark').
 married('catelyn stark', 'eddard stark').
 
+%parent(character1, charcter2)
+% Succeeds if character1 is the parent to character2
+parent('tywin lannister', 'cersei lannister').
+parent('tywin lannister', 'jaime lannister').
+parent('tywin lannister', 'tyrion lannister').
+parent('kevan lannister', 'lancel lannister').
 
 %serves(character, house)
 %	Succeeds if character is in service to the given house
