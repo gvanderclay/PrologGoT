@@ -196,7 +196,16 @@ sibling('arya stark', 'jon snow').
 sibling('bran stark', 'rickon stark').
 sibling('bran stark', 'jon snow').
 sibilng('rickon stark', 'jon snow').
+sibling('benjen stark', 'brandon stark').
+sibling('benjen stark', 'lyanna stark').
+sibling('benjen stark', 'eddard stark').
+sibling('brandon stark', 'lyanna stark').
+sibling('brandon stark', 'eddard stark').
+sibling('lyanna stark', 'eddard stark').
+
+
 sibling(A,B):- sibling(B,A).
+
 
 %serves(character, house)
 %	Succeeds if character is in service to the given house
