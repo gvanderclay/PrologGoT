@@ -202,7 +202,8 @@ sibling('benjen stark', 'eddard stark').
 sibling('brandon stark', 'lyanna stark').
 sibling('brandon stark', 'eddard stark').
 sibling('lyanna stark', 'eddard stark').
-
+sibling('catelyn stark', 'lysa arryn').
+sibling('catelyn stark', 'edmure tully').
 
 sibling(A,B):- sibling(B,A).
 
