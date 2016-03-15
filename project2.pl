@@ -1,4 +1,4 @@
-%Rules
+%Facts
 
 %male(character)
 %	Succeeds if the character is a male
@@ -191,6 +191,7 @@ parent('rickard stark', 'eddard stark').
 %	e.g.
 %	sibling('robb stark', 'sansa stark').
 %	sibling('sansa stark', 'robb stark').
+
 
 %serves(character, house)
 %	Succeeds if character is in service to the given house
