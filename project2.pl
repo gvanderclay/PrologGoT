@@ -18,7 +18,7 @@ male('loras tyrell').
 male('aeryis targaryen').
 male('rhaegar targaryen').
 male('viserys targaryen').
-male('robin arryn')
+male('robin arryn').
 male('jon arryn').
 male('hoster tully').
 male('edmure tully').
@@ -116,7 +116,7 @@ targaryen('daenerys targaryen').
 
 %arryn(character)
 %	Succeeds if the character is part of the House Arryn
-arryn('robin arryn')
+arryn('robin arryn').
 arryn('jon arryn').
 arryn('lysa arryn').
 
@@ -129,18 +129,12 @@ clegane('gregor clegane').
 %	Succeeds if character1 is married to character2
 %	Need a definition for both directions
 %	e.g.
-%	married('eddard stark', 'catelyn stark').
-%	married('catelyn stark', 'eddard stark').
 married('robert baratheon', 'cersei lannister').
-married('cersei lannister', 'robert baratheon').
 married('aerys targaryen', 'rhaella targaryen').
-married('rhaella targaryen', 'aerys targaryen').
 married('daenerys targaryen' , 'khal drogo').
-married('khal drogo', 'daenerys targaryen').
 married('jon arryn', 'lysa arryn').
-married('lysa arryn', 'jon arryn').
 married('eddard stark', 'catelyn stark').
-married('catelyn stark', 'eddard stark').
+married(A, B):- married(B, A).
 
 %parent(character1, charcter2)
 % Succeeds if character1 is the parent to character2
@@ -187,11 +181,22 @@ parent('rickard stark', 'eddard stark').
 
 %sibling(character 1, character 2)
 % Succeeds if character1 is sibling to character 2
-%	Need a definition for both directions
-%	e.g.
-%	sibling('robb stark', 'sansa stark').
-%	sibling('sansa stark', 'robb stark').
-
+sibling('sansa stark', 'robb stark').
+sibling('sansa stark', 'arya stark').
+sibling('sansa stark', 'bran stark').
+sibling('sansa stark', 'rickon stark').
+sibling('sansa stark', 'jon snow').
+sibling('robb stark', 'arya stark').
+sibling('robb stark', 'bran stark').
+sibling('robb stark', 'rickon stark').
+sibling('robb stark', 'jon snow').
+sibling('arya stark', 'bran stark').
+sibling('arya stark', 'rickon stark').
+sibling('arya stark', 'jon snow').
+sibling('bran stark', 'rickon stark').
+sibling('bran stark', 'jon snow').
+sibilng('rickon stark', 'jon snow').
+sibling(A,B):- sibling(B,A).
 
 %serves(character, house)
 %	Succeeds if character is in service to the given house
