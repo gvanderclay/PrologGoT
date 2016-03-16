@@ -204,12 +204,29 @@ sibling('brandon stark', 'eddard stark').
 sibling('lyanna stark', 'eddard stark').
 sibling('catelyn stark', 'lysa arryn').
 sibling('catelyn stark', 'edmure tully').
+sibling('willas tyrell', 'garlan tyrell').
+sibling('willas tyrell', 'margaery tyrell').
+sibling('willas tyrell', 'loras tyrell').
+sibling('garlan tyrell', 'margaery tyrell').
+sibling('garlan tyrell', 'loras tyrell').
+sibling('margaery tyrell', 'loras tyrell').
+sibling('joffrey baratheon', 'myrcella bartheon').
+sibling('joffrey baratheon', 'tommen baratheon').
+sibling('myrcella baratheon', 'tommen baratheon').
+sibling('cersei lannister', 'jaime lannister').
+sibling('cersei lannister', 'tyrion lannister').
+sibling('jaime lannister', 'tyrion lannister').
+sibling('stannis baratheon', 'renly baratheon').
+sibling('stannis baratheon', 'robert baratheon').
+sibling('renly baratheon', 'robert baratheon').
+sibling('tywin lannister', 'kevan lannister').
+sibling('rhaegar targaryen', 'viserys targaryen').
+sibling('rhaegar targaryen', 'daenerys targaryen').
+sibling('viserys targaryen', 'daenerys targaryen').
+sibling('sandor clegane', 'gregor clegane').
 
 sibling(A,B):- sibling(B,A).
 
-
-%serves(character, house)
-%	Succeeds if character is in service to the given house
 
 %bastard(character)
 %	Succeeds if the character is a bastard child
