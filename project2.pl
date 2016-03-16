@@ -105,6 +105,7 @@ tyrell('mace tyrell').
 tyrell('willas tyrell').
 tyrell('loras tyrell').
 tyrell('margaery tyrell').
+tyrell('garlan tyrell').
 
 %targaryen(character)
 %	Succeeds if the character is part of the House Targaryen
@@ -202,15 +203,68 @@ sibling('benjen stark', 'eddard stark').
 sibling('brandon stark', 'lyanna stark').
 sibling('brandon stark', 'eddard stark').
 sibling('lyanna stark', 'eddard stark').
-sibling('catelyn stark', 'lysa arryn').
-sibling('catelyn stark', 'edmure tully').
+sibling('catelyn stark','lysa arryn').
+sibling('catelyn stark','edmure tully').
+sibling('lysa arryn','edmure tully').
+sibling('willas tyrell','garlan tyrell').
+sibling('willas tyrell','margaery tyrell').
+sibling('willas tyrell','loras tyrell').
+sibling('garlan tyrell','margaery tyrell').
+sibling('garlan tyrell','loras tyrell').
+sibling('margaery tyrell','loras tyrell').
+sibling('stannis baratheon','renly baratheon').
+sibling('stannis baratheon','robert baratheon').
+sibling('renly baratheon','robert baratheon').
+sibling('joffrey baratheon','myrcella baratheon').
+sibling('joffrey baratheon','tommen baratheon').
+sibling('myrcella baratheon','tommen baratheon').
+sibling('cersei lannister','jaime lannister').
+sibling('cersei lannister','tyrion lannister').
+sibling('jaime lannister','tyrion lannister').
+sibling('tywin lannister','kevan lannister').
+sibling('sandor clegane','gregor clegane').
+sibling('rhaegar targaryen','viserys targaryen').
+sibling('rhaegar targaryen','daenerys targaryen').
+sibling('viserys targaryen','daenerys targaryen').
 
-sibling(A,B):- sibling(B,A).
-
-
-%serves(character, house)
-%	Succeeds if character is in service to the given house
+sibling(A,B):- sibling(A,B); sibling(B,A).
 
 %bastard(character)
 %	Succeeds if the character is a bastard child
 bastard('jon snow').
+
+%uncle(characterA, characterB)
+%   Succeeds if characterA is the uncle of characterB
+uncle(A,B):- male(A), sibling(A,C), parent(C,B).
+
+%aunt(characterA, characterB)
+%   Succeeds if character is the aunt of characterB
+aunt(A,B):- female(A), sibling(A,C), parent(C,B).
+
+%nephew(characterA, characterB)
+%   Succeeds if the characterA is the nephew of characterB
+nephew(A,B):- male(A), (uncle(B,A); aunt(B,A)).
+
+%niece(characterA, characterB)
+%   Succeeds if the characterA is the niece of characterB
+niece(A,B):- female(A), (uncle(B,A); aunt(B,A)).
+
+%father(characterA, characterB)
+%   Succeeds if the characterA is the father of characterB
+father(A,B):- male(A), parent(A,B).
+
+%mother(characterA, characterB)
+%   Succeeds if the characterA is the mother of characterB
+mother(A,B):- female(A), parent(A,B).
+
+%child(characterA, characterB)
+%   Succeeds if the characterA is the child of characterB
+child(A,B):- parent(B,A).
+
+%son(characterA, characterB)
+%   Succeeds if the characterA is the son of characterB
+son(A,B):- male(A), child(A,B).
+
+%daughter(characterA, characterB)
+%   Succeeds if the characterA is the daughter of characterB
+daughter(A,B):- female(A), child(A,B).
