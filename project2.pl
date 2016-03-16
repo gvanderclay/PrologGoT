@@ -233,7 +233,7 @@ sibling('rhaegar targaryen','viserys targaryen').
 sibling('rhaegar targaryen','daenerys targaryen').
 sibling('viserys targaryen','daenerys targaryen').
 
-sibling(A,B):- sibling(A,B); sibling(B,A).
+sibling(A,B):- sibling(B,A).
 
 %bastard(character)
 %	Succeeds if the character is a bastard child
@@ -291,5 +291,7 @@ ancestor(A,B):- descendant(B,A); (parent(C,B),(sibling(A,C);ancestor(A,C))).
 %Queries
 %=======================
 
-
-
+print_solution:- 
+write("Who are Rickard Stark's descendants?").
+bagof(X, descendant(X, 'rickard stark'), Query1),
+write(Query1), n1.
