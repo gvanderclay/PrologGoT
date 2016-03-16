@@ -285,7 +285,20 @@ descendant(A,B):- child(A,B);(parent(B,C),descendant(A,C)).
 
 %ancestor(characterA, characterB)
 %   Succeeds if characterA is an ancestor of characterB
-ancestor(A,B):- parent(A,B);uncle(A,B);aunt(A,B);(parent(C,B),not(sibling(A,C)),ancestor(A,C)).
+%   ancestor(A,B):- parent(A,B);uncle(A,B);aunt(A,B);(parent(C,B),not(sibling(A,C)),ancestor(A,C)).
+ancestor(A,B):- descendant(B,A).
+
+%cousin(characterA, characterB)
+%   Succeeds if characterA is a cousin of characterB
+cousin(A,B):- child(A,C), sibling(C,D), parent(D,B).
+
+%secondcousin(characterA, characterB)
+%   Succeeds if characterA is a second cousin of characterB
+secondcousin(A,B):- child(A,C), cousin(C,D), parent(D, B).
+
+%removedcousin(characterA, characterB)
+%   Succeeds if characterA is a first cousin once removed of characterB
+removedcousin(A,B):- (child(A,C), cousin(C,B)) ; (child(B,C), cousin(C,A)).
 
 %=======================
 %Queries
