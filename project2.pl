@@ -186,54 +186,54 @@ parent('rickard stark', 'brandon stark').
 parent('rickard stark', 'lyanna stark').
 parent('rickard stark', 'eddard stark').
 
-%sibling(character 1, character 2)
+%siblingX(character 1, character 2)
 % Succeeds if character1 is sibling to character 2
-sibling('sansa stark', 'robb stark').
-sibling('sansa stark', 'arya stark').
-sibling('sansa stark', 'bran stark').
-sibling('sansa stark', 'rickon stark').
-sibling('sansa stark', 'jon snow').
-sibling('robb stark', 'arya stark').
-sibling('robb stark', 'bran stark').
-sibling('robb stark', 'rickon stark').
-sibling('robb stark', 'jon snow').
-sibling('arya stark', 'bran stark').
-sibling('arya stark', 'rickon stark').
-sibling('arya stark', 'jon snow').
-sibling('bran stark', 'rickon stark').
-sibling('bran stark', 'jon snow').
-sibilng('rickon stark', 'jon snow').
-sibling('benjen stark', 'brandon stark').
-sibling('benjen stark', 'lyanna stark').
-sibling('benjen stark', 'eddard stark').
-sibling('brandon stark', 'lyanna stark').
-sibling('brandon stark', 'eddard stark').
-sibling('lyanna stark', 'eddard stark').
-sibling('catelyn stark','lysa arryn').
-sibling('catelyn stark','edmure tully').
-sibling('lysa arryn','edmure tully').
-sibling('willas tyrell','garlan tyrell').
-sibling('willas tyrell','margaery tyrell').
-sibling('willas tyrell','loras tyrell').
-sibling('garlan tyrell','margaery tyrell').
-sibling('garlan tyrell','loras tyrell').
-sibling('margaery tyrell','loras tyrell').
-sibling('stannis baratheon','renly baratheon').
-sibling('stannis baratheon','robert baratheon').
-sibling('renly baratheon','robert baratheon').
-sibling('joffrey baratheon','myrcella baratheon').
-sibling('joffrey baratheon','tommen baratheon').
-sibling('myrcella baratheon','tommen baratheon').
-sibling('cersei lannister','jaime lannister').
-sibling('cersei lannister','tyrion lannister').
-sibling('jaime lannister','tyrion lannister').
-sibling('tywin lannister','kevan lannister').
-sibling('sandor clegane','gregor clegane').
-sibling('rhaegar targaryen','viserys targaryen').
-sibling('rhaegar targaryen','daenerys targaryen').
-sibling('viserys targaryen','daenerys targaryen').
+siblingX('sansa stark', 'robb stark').
+siblingX('sansa stark', 'arya stark').
+siblingX('sansa stark', 'bran stark').
+siblingX('sansa stark', 'rickon stark').
+siblingX('sansa stark', 'jon snow').
+siblingX('robb stark', 'arya stark').
+siblingX('robb stark', 'bran stark').
+siblingX('robb stark', 'rickon stark').
+siblingX('robb stark', 'jon snow').
+siblingX('arya stark', 'bran stark').
+siblingX('arya stark', 'rickon stark').
+siblingX('arya stark', 'jon snow').
+siblingX('bran stark', 'rickon stark').
+siblingX('bran stark', 'jon snow').
+siblingX('rickon stark', 'jon snow').
+siblingX('benjen stark', 'brandon stark').
+siblingX('benjen stark', 'lyanna stark').
+siblingX('benjen stark', 'eddard stark').
+siblingX('brandon stark', 'lyanna stark').
+siblingX('brandon stark', 'eddard stark').
+siblingX('lyanna stark', 'eddard stark').
+siblingX('catelyn stark','lysa arryn').
+siblingX('catelyn stark','edmure tully').
+siblingX('lysa arryn','edmure tully').
+siblingX('willas tyrell','garlan tyrell').
+siblingX('willas tyrell','margaery tyrell').
+siblingX('willas tyrell','loras tyrell').
+siblingX('garlan tyrell','margaery tyrell').
+siblingX('garlan tyrell','loras tyrell').
+siblingX('margaery tyrell','loras tyrell').
+siblingX('stannis baratheon','renly baratheon').
+siblingX('stannis baratheon','robert baratheon').
+siblingX('renly baratheon','robert baratheon').
+siblingX('joffrey baratheon','myrcella baratheon').
+siblingX('joffrey baratheon','tommen baratheon').
+siblingX('myrcella baratheon','tommen baratheon').
+siblingX('cersei lannister','jaime lannister').
+siblingX('cersei lannister','tyrion lannister').
+siblingX('jaime lannister','tyrion lannister').
+siblingX('tywin lannister','kevan lannister').
+siblingX('sandor clegane','gregor clegane').
+siblingX('rhaegar targaryen','viserys targaryen').
+siblingX('rhaegar targaryen','daenerys targaryen').
+siblingX('viserys targaryen','daenerys targaryen').
 
-sibling(A,B):- sibling(B,A).
+sibling(A,B):- siblingX(A,B);siblingX(B,A).
 
 %bastard(character)
 %	Succeeds if the character is a bastard child
@@ -245,11 +245,11 @@ bastard('jon snow').
 
 %uncle(characterA, characterB)
 %   Succeeds if characterA is the uncle of characterB
-uncle(A,B):- male(A), sibling(A,C), parent(C,B).
+uncle(A,B):- male(A), parent(C,B), sibling(A,C).
 
 %aunt(characterA, characterB)
 %   Succeeds if character is the aunt of characterB
-aunt(A,B):- female(A), sibling(A,C), parent(C,B).
+aunt(A,B):- female(A), parent(C,B), sibling(A,C).
 
 %nephew(characterA, characterB)
 %   Succeeds if characterA is the nephew of characterB
@@ -285,7 +285,7 @@ descendant(A,B):- child(A,B);(parent(B,C),descendant(A,C)).
 
 %ancestor(characterA, characterB)
 %   Succeeds if characterA is an ancestor of characterB
-ancestor(A,B):- descendant(B,A).
+ancestor(A,B):- parent(A,B);uncle(A,B);aunt(A,B);(parent(C,B),not(sibling(A,C)),ancestor(A,C)).
 
 %=======================
 %Queries
