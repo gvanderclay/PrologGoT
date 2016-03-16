@@ -227,14 +227,7 @@ sibling('rhaegar targaryen','viserys targaryen').
 sibling('rhaegar targaryen','daenerys targaryen').
 sibling('viserys targaryen','daenerys targaryen').
 
-
-
-
 sibling(A,B):- sibling(A,B); sibling(B,A).
-
-
-%serves(character, house)
-%	Succeeds if character is in service to the given house
 
 %bastard(character)
 %	Succeeds if the character is a bastard child
