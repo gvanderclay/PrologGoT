@@ -285,7 +285,7 @@ descendant(A,B):- child(A,B);(parent(B,C),descendant(A,C)).
 
 %ancestor(characterA, characterB)
 %   Succeeds if characterA is an ancestor of characterB
-ancestor(A,B):- descendant(B,A).
+ancestor(A,B):- descendant(B,A); (parent(C,B),(sibling(A,C);ancestor(A,C))).
 
 %=======================
 %Queries
