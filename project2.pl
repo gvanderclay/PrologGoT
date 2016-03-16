@@ -292,6 +292,18 @@ ancestor(A,B):- descendant(B,A).
 %=======================
 
 print_solution:- 
-write("Who are Rickard Stark's descendants?").
-bagof(X, descendant(X, 'rickard stark'), Query1),
-write(Query1), n1.
+write("Who are Rickard Stark's descendants?"), nl,
+bagof(X, descendant(X, 'rickard stark'), Query1), 
+write(Query1), nl,
+write("Who are Tommen Baratheon's parents?"), nl,
+bagof(X, parent(X, 'tommen baratheon'), Query2),
+write(Query2), nl,
+write("Who is Jon Snow's father?"), nl,
+father(X, 'jon snow'),
+write(X), nl,
+write("Who are Robin Arryn's aunts?"), nl,
+bagof(X, aunt(X, 'robin arryn'), Query3), 
+write(Query3), nl,
+write("Who are Robin Arryn's uncles?"), nl,
+bagof(X, uncle(X, 'robin arryn'), Query4),
+write(Query4), nl.
