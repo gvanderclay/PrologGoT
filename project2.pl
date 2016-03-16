@@ -232,3 +232,39 @@ sibling(A,B):- sibling(A,B); sibling(B,A).
 %bastard(character)
 %	Succeeds if the character is a bastard child
 bastard('jon snow').
+
+%uncle(characterA, characterB)
+%   Succeeds if characterA is the uncle of characterB
+uncle(A,B):- male(A), sibling(A,C), parent(C,B).
+
+%aunt(characterA, characterB)
+%   Succeeds if character is the aunt of characterB
+aunt(A,B):- female(A), sibling(A,C), parent(C,B).
+
+%nephew(characterA, characterB)
+%   Succeeds if the characterA is the nephew of characterB
+nephew(A,B):- male(A), (uncle(B,A); aunt(B,A)).
+
+%niece(characterA, characterB)
+%   Succeeds if the characterA is the niece of characterB
+niece(A,B):- female(A), (uncle(B,A); aunt(B,A)).
+
+%father(characterA, characterB)
+%   Succeeds if the characterA is the father of characterB
+father(A,B):- male(A), parent(A,B).
+
+%mother(characterA, characterB)
+%   Succeeds if the characterA is the mother of characterB
+mother(A,B):- female(A), parent(A,B).
+
+%child(characterA, characterB)
+%   Succeeds if the characterA is the child of characterB
+child(A,B):- parent(B,A).
+
+%son(characterA, characterB)
+%   Succeeds if the characterA is the son of characterB
+son(A,B):- male(A), child(A,B).
+
+%daughter(characterA, characterB)
+%   Succeeds if the characterA is the daughter of characterB
+daughter(A,B):- female(A), child(A,B).
