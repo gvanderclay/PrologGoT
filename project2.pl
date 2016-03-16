@@ -105,6 +105,7 @@ tyrell('mace tyrell').
 tyrell('willas tyrell').
 tyrell('loras tyrell').
 tyrell('margaery tyrell').
+tyrell('garlan tyrell').
 
 %targaryen(character)
 %	Succeeds if the character is part of the House Targaryen
@@ -202,9 +203,34 @@ sibling('benjen stark', 'eddard stark').
 sibling('brandon stark', 'lyanna stark').
 sibling('brandon stark', 'eddard stark').
 sibling('lyanna stark', 'eddard stark').
+sibling('catelyn stark','lysa arryn').
+sibling('catelyn stark','edmure tully').
+sibling('lysa arryn','edmure tully').
+sibling('willas tyrell','garlan tyrell').
+sibling('willas tyrell','margaery tyrell').
+sibling('willas tyrell','loras tyrell').
+sibling('garlan tyrell','margaery tyrell').
+sibling('garlan tyrell','loras tyrell').
+sibling('margaery tyrell','loras tyrell').
+sibling('stannis baratheon','renly baratheon').
+sibling('stannis baratheon','robert baratheon').
+sibling('renly baratheon','robert baratheon').
+sibling('joffrey baratheon','myrcella baratheon').
+sibling('joffrey baratheon','tommen baratheon').
+sibling('myrcella baratheon','tommen baratheon').
+sibling('cersei lannister','jaime lannister').
+sibling('cersei lannister','tyrion lannister').
+sibling('jaime lannister','tyrion lannister').
+sibling('tywin lannister','kevan lannister').
+sibling('sandor clegane','gregor clegane').
+sibling('rhaegar targaryen','viserys targaryen').
+sibling('rhaegar targaryen','daenerys targaryen').
+sibling('viserys targaryen','daenerys targaryen').
 
 
-sibling(A,B):- sibling(B,A).
+
+
+sibling(A,B):- sibling(A,B); sibling(B,A).
 
 
 %serves(character, house)
