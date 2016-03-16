@@ -1,4 +1,6 @@
+%====================
 %Facts
+%====================
 
 %male(character)
 %	Succeeds if the character is a male
@@ -135,13 +137,17 @@ married('aerys targaryen', 'rhaella targaryen').
 married('daenerys targaryen' , 'khal drogo').
 married('jon arryn', 'lysa arryn').
 married('eddard stark', 'catelyn stark').
+married('joanna lannister', 'tywin lannister').
 married(A, B):- married(B, A).
 
 %parent(character1, charcter2)
 % Succeeds if character1 is the parent to character2
 parent('tywin lannister', 'cersei lannister').
+parent('joanna lannister','cersei lannister').
 parent('tywin lannister', 'jaime lannister').
+parent('joanna lannister','jaime lannister').
 parent('tywin lannister', 'tyrion lannister').
+parent('joanna lannister','tyrion lannister').
 parent('kevan lannister', 'lancel lannister').
 parent('aerys targaryen', 'rhaegar targaryen').
 parent('rhaella targaryen', 'rhaegar targaryen').
@@ -233,6 +239,10 @@ sibling(A,B):- sibling(A,B); sibling(B,A).
 %	Succeeds if the character is a bastard child
 bastard('jon snow').
 
+%=======================
+%RULES
+%=======================
+
 %uncle(characterA, characterB)
 %   Succeeds if characterA is the uncle of characterB
 uncle(A,B):- male(A), sibling(A,C), parent(C,B).
@@ -242,29 +252,44 @@ uncle(A,B):- male(A), sibling(A,C), parent(C,B).
 aunt(A,B):- female(A), sibling(A,C), parent(C,B).
 
 %nephew(characterA, characterB)
-%   Succeeds if the characterA is the nephew of characterB
+%   Succeeds if characterA is the nephew of characterB
 nephew(A,B):- male(A), (uncle(B,A); aunt(B,A)).
 
 %niece(characterA, characterB)
-%   Succeeds if the characterA is the niece of characterB
+%   Succeeds if characterA is the niece of characterB
 niece(A,B):- female(A), (uncle(B,A); aunt(B,A)).
 
 %father(characterA, characterB)
-%   Succeeds if the characterA is the father of characterB
+%   Succeeds if characterA is the father of characterB
 father(A,B):- male(A), parent(A,B).
 
 %mother(characterA, characterB)
-%   Succeeds if the characterA is the mother of characterB
+%   Succeeds if characterA is the mother of characterB
 mother(A,B):- female(A), parent(A,B).
 
 %child(characterA, characterB)
-%   Succeeds if the characterA is the child of characterB
+%   Succeeds if characterA is the child of characterB
 child(A,B):- parent(B,A).
 
 %son(characterA, characterB)
-%   Succeeds if the characterA is the son of characterB
+%   Succeeds if characterA is the son of characterB
 son(A,B):- male(A), child(A,B).
 
 %daughter(characterA, characterB)
-%   Succeeds if the characterA is the daughter of characterB
+%   Succeeds if characterA is the daughter of characterB
 daughter(A,B):- female(A), child(A,B).
+
+%descendant(characterA, characterB)
+%   Succeeds if characterA is a descendant of characterB
+descendant(A,B):- child(A,B);(parent(B,C),descendant(A,C)).
+
+%ancestor(characterA, characterB)
+%   Succeeds if characterA is an ancestor of characterB
+ancestor(A,B):- descendant(B,A).
+
+%=======================
+%Queries
+%=======================
+
+
+
