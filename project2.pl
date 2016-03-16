@@ -245,7 +245,7 @@ bastard('jon snow').
 
 %uncle(characterA, characterB)
 %   Succeeds if characterA is the uncle of characterB
-uncle(A,B):- male(A), parent(C,B), sibling(A,C).
+uncle(A,B):- male(A), parent(C,B), sibling(A,C). 
 
 %aunt(characterA, characterB)
 %   Succeeds if character is the aunt of characterB
@@ -301,9 +301,9 @@ write(Query2), nl,
 write("Who is Jon Snow's father?"), nl,
 father(X, 'jon snow'),
 write(X), nl,
-write("Who are Robin Arryn's aunts?"), nl,
-bagof(X, aunt(X, 'robin arryn'), Query3), 
+write("Who are Arya Stark's aunts?"), nl,
+bagof(Y, aunt(Y, 'arya stark'), Query3), 
 write(Query3), nl,
-write("Who are Robin Arryn's uncles?"), nl,
-bagof(X, uncle(X, 'robin arryn'), Query4),
+write("Who are Myrcella Baratheon's uncles?"), nl,
+bagof(Y, uncle(Y, 'myrcella baratheon'), Query4),
 write(Query4), nl.
