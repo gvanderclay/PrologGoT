@@ -327,5 +327,8 @@ write("Is Tommen Baratheon a descendant of Tywin Lannister?"), nl,
 (descendant('tommen baratheon', 'tywin lannister')
 	-> write('yes')
 	 ; write('no')
-), nl.
-
+), nl,
+write('There are no second cousins in the family tree but this is what the rule looks like'), nl,
+write("secondcousin(A,B):- child(A,C), cousin(C,D), parent(D, B)."), nl,
+write("All first cousins once removed"), nl, 
+setof(A, removedcousin(A,B), X0), nl,  write(B), nl, write(X0), fail; true.
