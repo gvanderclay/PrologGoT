@@ -319,4 +319,13 @@ bagof(Y, aunt(Y, 'arya stark'), Query3),
 write(Query3), nl,
 write("Who are Myrcella Baratheon's uncles?"), nl,
 bagof(Y, uncle(Y, 'myrcella baratheon'), Query4),
-write(Query4), nl.
+write(Query4), nl,
+write("Who are Sansa Stark's ancestors?"), nl,
+bagof(Y, ancestor(Y, 'sansa stark'), Query5),
+write(Query5), nl,
+write("Is Tommen Baratheon a descendant of Tywin Lannister?"), nl,
+(descendant('tommen baratheon', 'tywin lannister')
+	-> write('yes')
+	 ; write('no')
+), nl.
+
